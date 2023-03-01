@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Blog
+{% endblock %}
+
+{% block main %}
+<h2 class="text-start animation-fade-in-3 mb-5">Blog</h2>
+<h3 class="text-start animation-fade-in-4">I try to leave entrys regulary.</h3>
+<h5 class="text-start mt-3 comment-header-font  animation-fade-in-5">Have a look around!</h5>
+<section class="pt-2 text-start" name="documentation">
+  <p>
+      <a class="btn col-1 btn-dark" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+        Dev-Details
+      </a>
+    </p>
+    <div class="collapse text-start" id="collapseExample">
+      <div class="card card-body bg-dark text-light mx-auto w-75">
+        <p>Blog-posts can only be performed by an Admin.</p>
+            <p>You can watch <a href="#" class="text-primary">this Video</a> if you want to see, how that works.</p>
+            <p>The content is injected dynamicly with Jinja.</p>
+      </div>
+    </div>
+</section>
+{%if warning is defined%}
+        <h3 class="text-warning">{{warning}}</h3>
+        {%endif%}
+<div class="buffer-1"></div>
+
+
+    <div class="card mb-5 bg-dark-trans w-75 mx-auto box-shadow-light">
+      <div class="card-header">
+        <h3 class="site-header-font text-light">Blog entrys from Chris</h3>
+      </div>
+      <div class="card-text pb-4">
+      {%if blogs is defined%}
+      {%for blog in blogs%}
+      <div class="card border-0 m-5 w-50 mx-auto box-shadow-light bg-dark-trans">
+        
+        <div class="card-header bg-color-black small comment-header-font">{{blog['title']}}</div>
+        <div class="card-text mt-3 mb-3">
+          <h4 class="comment-text-font">{{blog['text']}}</h4>
+        </div>
+        <div class="card-footer bg-color-blue">
+          
+          <p class="small comment-header-font">{{blog['timestamp']}}</p>
+          
+          {%if session['user_id'] == 1 %} 
+          <form action="/deletepost" method="post">
+          <textarea hidden name="comment_id" id="comment_id" cols="0" rows="0">{{comment['comment_id']}}</textarea>
+          <button type="submit"><img class="trash-can" src="/static/trash-can.png" alt=""></button>
+        </form>
+        {%endif%}
+        
+        </div>
+      </div> 
+      <hr class="text-light">
+
+      {%endfor%}
+      {%endif%}        
+      </div>
+    </div>
+{% endblock %}

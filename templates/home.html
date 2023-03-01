@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+<h2 class="text-start animation-fade-in-3 mb-5">Home</h2>
+<h3 class="text-start animation-fade-in-4">Welcome, {{userdata[0]["username"]}}</h3>
+<h5 class="text-start mt-3 comment-header-font  animation-fade-in-5">Your are a member since {{userdata[0]["reg_date"]}}</h5>
+<section class="pt-2 text-start" name="documentation">
+  <p>
+      <a class="btn col-1 btn-dark" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+        Dev-Details
+      </a>
+    </p>
+    <div class="collapse text-start" id="collapseExample">
+      <div class="card card-body bg-dark text-light mx-auto w-75">
+        <p>This site is only reachable, if the user is logged in.</p>
+        <p>On loading, the backend will fetch relevant data from database.</p>
+        <p>Jinja is used to dynamicly generate comment fields and insert user-data up top.</p>
+        <p>When logged in as admin, jinja will insert a link to the admin-center.</p>
+        <p>If user is not admin, an error message will be displayed if user tries to reach admin-center.</p>
+        <p><a href="/admincenter">Try it!</a></p>
+      </div>
+    </div>
+</section>
+{%if warning is defined%}
+        <h3 class="text-warning">{{warning}}</h3>
+        {%endif%}
+<div class="buffer-1"></div>
+
+
+    
+
+  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      {%if comments is defined%}
+      {%for comment in comments%}
+      <div class="carousel-item">
+        
+        <div class="card border-0 m-5 w-50 mx-auto box-shadow-light bg-dark-trans">
+          <div class="pl-5 img-container">
+            <img class="bg-comment" src="/static/comments.png">
+          </div>
+          
+          <div class="card-header bg-color-black small comment-header-font">{{comment['username']}} said:</div>
+          <div class="card-text mt-3 mb-3">
+            <h4 class="comment-text-font">{{comment['text']}}</h4>
+          </div>
+          <div class="card-footer bg-color-blue">
+            
+            <p class="small comment-header-font">{{comment['timestamp']}}</p>
+            
+            {%if session['user_id'] == 1 %} 
+            <form action="/deletecomment" method="post">
+            <textarea hidden name="comment_id" id="comment_id" cols="0" rows="0">{{comment['comment_id']}}</textarea>
+            <button type="submit"><img class="trash-can" src="/static/trash-can.png" alt=""></button>
+          </form>
+          {%endif%}
+          
+          </div>
+        </div>             
+      </div>
+      {%endfor%}
+      {%endif%} 
+     
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  <a href="/comment" class="btn w-50 btn-primary form-control">Leave a comment</a>
+
+    <script>
+      document.querySelector(".carousel-item").classList.add("active");
+    </script>
+{% endblock %}

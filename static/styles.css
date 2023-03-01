@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arvo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arvo&display=swap');
+
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+ 
+    color: white;
+}
+
+.bg-comment {
+    position:absolute;
+    opacity: 15%;
+    height: 150px;
+    width: auto;
+}
+
+
+.site-header-font{
+    font-family: 'Arvo', serif;
+    font-weight: 800;
+}
+
+.comment-header-font {
+    font-family: 'Arvo', serif;
+}
+
+.comment-text-font {
+    font-family: 'Catamaran', sans-serif;
+}
+
+.trash-can {
+    max-width: 20px;
+    max-height: 20px;
+}
+
+
+.bg-white {
+    background-color: white;
+}
+
+.buffer-1 {
+    min-height: 2em;
+}
+.buffer-2 {
+    min-height: 4em;
+}
+.buffer-3 {
+    min-height: 6em;
+}
+.buffer-4 {
+    min-height: 8em;
+}
+.buffer-5 {
+    min-height: 10em;
+}
+
+.nav-bg-dark-trans {
+    background: rgba(0, 0, 0, 0.85)
+}
+
+.bg-dark-trans {
+    background: rgba(19, 16, 16, 0.85)
+}
+
+.box-shadow {
+    box-shadow: -1px 2px 30px 0px rgba(92,92,92,0.86);
+}
+
+.box-shadow-light {
+    box-shadow: 1px 10px 55px 8px rgba(0,0,0,1);
+}
+
+.font-bold {
+    font-weight: bolder;
+    font-size: 50px;
+    
+}
+
+.border-bottom {
+    border-bottom: 5px solid #000000;
+}
+
+.social-icon {
+    max-height: 40px;
+    width: auto;
+}
+
+.register-card {
+    height: 3000px;
+}
+
+.animation-fade-in-3 {
+    animation: fadeIn 3s; 
+}
+
+.animation-fade-in-4 {
+    animation: fadeIn 4s; 
+}
+
+.animation-fade-in-5 {
+     animation: fadeIn 5s; 
+}
+
+.animation-fade-in-8 {
+    animation: fadeIn 8s; 
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }

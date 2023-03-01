@@ -1,0 +1,87 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block main %}
+<!--'title', 'title_detail', 'links', 'link', 'summary', 'summary_detail', 'id', 'guidislink', 'published', 'published_parsed', 'source'-->
+    <h1 class="color-primary mb-5 site-header-font">RSS Reader</h1>
+
+    <section class="mb-3" name="documentation">
+        <p>
+            <a class="btn btn-secondary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+              Dev-Details
+            </a>
+          </p>
+          <div class="collapse" id="collapseExample">
+            <div class="card card-body box-shadow bg-dark text-light mx-auto w-75">
+              <p>The RSS-reader is using <a class="text-primary" target="_blank" href="https://pypi.org/project/feedparser/">'feedparser'</a> to get feed data.</p>
+              <p>The entrys will be created dynamicly for every entry.</p>
+              <p>The challenge is to cover every case.</p>
+              <p>Feeds are mostly structured very simliar, but some are missing key-values.</p>
+              <p>If no feed was found, a warning will be displayed to the user.</p>
+              <p>Try this working feed: </p>
+              <p class="text-warning">https://news.un.org/feed/subscribe/en/news/topic/climate-change/feed/rss.xml</p>
+              <p>Try this incomplete feed URL:</p>
+              <p class="text-warning">https://news.un.org/feed/subscribe/en/news/topic/climate-change/feed</p>
+              <p>Try this wrongly formatted URL:</p>
+              <p class="text-warning">news.un.org/feed/subscribe/en/news/topic/climate-change/feed/rss.xml</p>
+            </div>
+          </div>
+    </section>
+
+    <div class="card w-50 mx-auto box-shadow-small pb-3 bg-dark">
+        <form action="/rssreader" method="post">
+            <div class="card-text pt-4">                
+                <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="rssurl" name="rssurl" placeholder="Please enter RSS URL" type="text">
+            </div>
+            <div class="card-footer">        
+                <button type="submit" class="w-25 btn btn-secondary mt-3">Go</button>
+                {%if warning is defined%}
+                <h3 class="text-warning mt-3">{{warning}}</h3>
+                {%endif%}
+            </div>
+        </form>
+    </div>
+
+    beds@trendwood.com.name
+
+    - Scetch mit maßen
+
+    
+        {%if rss_feed is not undefined%}
+        <div class="card bg-dark w-75 mx-auto box-shadow mt-5">
+            <div class="card-header">
+              <h3 class="site-header-font text-light">Feed entrys</h3>
+            </div>
+            <div class="card-text box-shadow pb-4"></div>
+            {%for feed in rss_feed%}       
+                <div class="card mt-5 w-50 mx-auto">
+                  <div class="card-header comment-header-font"><h4>{{feed['title']}}</h4></div>
+                  <div class="card-text mt-3 mb-3">
+              <h4 class="comment-text-font">{{feed['summary']}}</h4>
+              </div>
+                 <div class="card-footer text-muted">
+                
+                <p>Source: 
+                    {%if feed['source'] is defined%}
+                    {{feed['source']['title']}}
+                    {%else%}
+                    No entry in feed.
+                    {%endif%}
+                </p>
+                <p>Published: {{feed['published']}}</p>
+                <p><a target="_blank" href="{{feed['link']}}">Learn more!</a></p>
+             
+            </div>
+          </div>
+      
+  
+        {%endfor%}
+    </div>
+</div>
+        {%endif%}        
+
+    
+{% endblock %}

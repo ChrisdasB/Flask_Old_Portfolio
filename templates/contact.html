@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Contact
+{% endblock %}
+
+{% block main %}
+<h2 class="text-start animation-fade-in-3 mb-5">Contact</h2>
+<h3 class="text-start animation-fade-in-4">No matter if you like it or hate it.</h3>
+<h5 class="text-start mt-3 comment-header-font  animation-fade-in-5">Send me a message!</h5>
+<section class="pt-2 text-start" name="documentation">
+  <p>
+      <a class="btn col-1 btn-dark" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+        Dev-Details
+      </a>
+    </p>
+    <div class="collapse text-start" id="collapseExample">
+      <div class="card card-body bg-dark text-light mx-auto w-75">
+        
+        <p>For mailing i use <a href="https://pythonhosted.org/Flask-Mail/" target="_blank" class="text-primary">flask_mail.</a></p>
+        <p>The mailing itself is working good, even though recommended services like g-mail or outlook do not support third party access anymore.</p>
+        <p>I could have gone for a app-key, but that is only a onetime solution.</p>
+        <p>Instead i went for a smaller free-mail service, that still allowes third party access.</p>
+        <p>I looked for other solutions like a mailing-API, but 'free' service all require a validated company mail address.</p>
+        <p>There where private services available, bot non was free of charge.</p>
+        <p>The only big downside of flak_mail, is that it can not verify, if a mail was actually delivered.</p>
+        <p>It get's send, and thats it.</p>
+        <p>There where other solutions promoted like <a class="text-primary" target="_blank" href="https://pypi.org/project/validate_email/">'validate_email'</a> and many others.</p>
+        <p>But these modules are often heavily outdate, or straight up give you no return value on call.</p>
+        <p>So im aware, that mailing could be done better, if i where willing to spend the money for a proper mail-API.</p>
+        <p>The backend checks the mail against a regex, prepares and sends a thank you mail to the provided mail, and a info-mail to my mailbox.</p>
+        <p>So the mail will actually be delivered to my account.</p>
+        <p>Dont hesitate to send me a mail 🙂</p>
+      </div>
+    </div>
+</section>
+{%if warning is defined%}
+        <h3 class="text-warning">{{warning}}</h3>
+        {%endif%}
+<div class="buffer-1"></div>
+
+
+
+
+<div class="card w-50 mx-auto box-shadow-light mb-5 bg-dark-trans">
+    <h3 class="site-header-font text-light">Your message</h3>
+<form action="/contact" method="post">
+    <div class="card-text pt-5">        
+        <input autocomplete="off" class="form-control w-50 mx-auto mb-3" type="text" placeholder="Title" name="title" id="title">
+        <textarea autocomplete="off" placeholder="Message" name="message" class="form-control w-50 mx-auto" id="message" cols="50" rows="4">{{translation}}</textarea>
+        <input autocomplete="off" class="form-control w-50 mx-auto mt-3" type="mail" placeholder="Your mail" name="mail" id="mail">
+        
+    </div>
+    <div class="card-footer">        
+        <button type="submit" class="w-25 btn btn-secondary">Send</button>
+        {%if warning is defined%}
+                <h5 class="text-warning mt-3">{{warning}}</h5>
+        {%endif%}
+    </div>
+</form>
+</div>
+
+<script>
+    document.querySelector(".prevent-default").on("keydown", function(e){
+   if(e.keyCode === 13){
+       e.preventDefault();
+   }
+});
+</script>
+{% endblock %}

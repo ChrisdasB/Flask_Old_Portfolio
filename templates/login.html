@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block main %}
+
+
+<div class="row">
+    <a href="https://github.com/ChrisdasB" target="_blank" class="social-icon"><img src="/static/github.png" alt="" class="social-icon box-shadow"></a>
+    <a href="https://www.facebook.com/chris.block.54/" target="_blank" class="social-icon"><img src="/static/facebook.png" alt="" class="social-icon box-shadow"></a>
+</div>
+<h2 class="text-start animation-fade-in-3">Welcome</h2>
+<h5 class="text-start animation-fade-in-4">to the portfolio of</h5>
+<h1 class="text-start font-bold mt-3 comment-header-font  animation-fade-in-5">Chris Schmidt v. W.</h1>
+<div class="row">
+    <section class="pt-2 text-start" name="documentation">
+        <p>
+            <a class="btn col-1 btn-dark" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+              Dev-Details
+            </a>
+          </p>
+          <div class="collapse text-start" id="collapseExample">
+            <div class="card card-body bg-dark text-light mx-auto w-75">
+              <p>This site is created with HTML, CSS, JavaScript, Python and Flask.</p>
+              <p>Please login or create an account, to see more of my work.</p>
+              <p>This site is supposed to be a technical showcase.</p>
+            </div>
+          </div>
+    </section>
+</div>
+<div class="buffer-1"></div>
+
+<div class="row animation-fade-in-5">
+<div class="login border-0 card col-lg-4 col-md-12 text-start box-shadow">
+    <div class="card-header border-0 pb-3 bg-white text-center text-dark"><h3 class="comment-text-font">Login</h3></div>
+    <form action="/login" method="post">
+        <div class="card-text form m-2">
+        <input class="border-0 form-control border-bottom mx-auto" type="text" name="username" id="username" placeholder="Username">
+        <input class="border-0 border-bottom  form-control mt-2" type="text" name="password" id="password" placeholder="Password">
+    </div>
+    <div class="card-footer border-0 bg-white">
+        <button class="form-control btn mw-25 mx-auto btn-primary">Login</button>
+        <div class="buffer-1"></div>
+        <small id="password2-info" class="form-text text-dark">No Account? <a href="/register">Register!</a></small>
+    </div>
+    </form>
+</div>
+</div>
+
+    {%if warning is not undefined%}
+    <div>
+        <h3 class="mt-3 text-warning">{{warning}}</h3>
+    </div>
+
+    {%endif%}
+</div>
+</div>
+    
+
+{% endblock %}
