@@ -368,6 +368,14 @@ def blog():
 def aboutme():
     return render_template("aboutme.html")
 
+
+# ABOUT ME
+@app.route("/projects", methods=["GET"])
+@login_required
+def projects():
+    return render_template("projects.html")
+
+
 #ADMIN
 @app.route("/admincenter", methods=["GET", "POST"])
 # Make sure, admin is logged in in this session
@@ -377,6 +385,9 @@ def admincenter():
     if request.method == "GET":
         return render_template("admincenter.html")
     
+
+
+
 
 # BLOGPOST
 @app.route("/blogpost", methods =["POST"])

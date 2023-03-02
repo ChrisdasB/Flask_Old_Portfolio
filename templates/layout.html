@@ -37,13 +37,17 @@
             {%else%}
             <li class="nav-item active">
               <a class="nav-link" href="/"><h4>Home</h4></a>
+            </li>            
+            <li class="nav-item active">
+              <a class="nav-link" href="/aboutme"><h4>About Me</h4></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/projects"><h4>Projects</h4></a>
             </li>
             <li class="nav-item active">
               <a class="nav-link" href="/blog"><h4>Blog</h4></a>
             </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="/rssreader"><h4>RSS Reader</h4></a>
-            </li>
+            
             <li class="nav-item active">
               <a class="nav-link" href="/contact"><h4>Contact</h4></a>
             </li>
@@ -68,8 +72,8 @@
             {% block main %}{% endblock %}
         </main>
 
-        <footer class="small text-center text-muted fixed-bottom">
-          <div class="container-fluid bg-dark color-secondary">
+        <footer class="small text-center text-secondary fixed-bottom">
+          <div class="container-fluid bg-dark-trans color-secondary">
             Created by Chris S.v.W.
           </div>
         </footer>
