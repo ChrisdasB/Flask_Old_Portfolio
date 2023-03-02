@@ -117,3 +117,43 @@ body {
     0% { opacity: 0; }
     100% { opacity: 1; }
   }
+
+
+.animation-fly-in-left {
+    position: relative;
+    animation: left-fly-in;
+    animation-duration: 3s;
+}
+
+.animation-fly-in-right {
+    position: relative;
+    animation: right-fly-in;
+    animation-duration: 3s;
+}
+
+.animation-fly-in-top-3 {
+    position: relative;
+    animation: top-fly-in ease-in;
+    animation-duration: 3s;
+}
+
+.animation-fly-in-top-4 {
+    position: relative;
+    animation: top-fly-in ease-in;
+    animation-duration: 3.5s;
+}
+
+@keyframes left-fly-in {
+    0% {left: -50px;}
+    100% {left: 0px;}
+}
+
+@keyframes right-fly-in {
+    0% {right: -50px;}
+    100% {right: 0px;}
+}
+
+@keyframes top-fly-in {
+    0% {top: -300px;}
+    100% {top: 0px;}
+}

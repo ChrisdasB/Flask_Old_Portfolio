@@ -6,8 +6,8 @@
 
 {% block main %}
 <h2 class="text-start animation-fade-in-3 mb-5">Blog</h2>
-<h3 class="text-start animation-fade-in-4">I try to leave entrys regulary.</h3>
-<h5 class="text-start mt-3 comment-header-font  animation-fade-in-5">Have a look around!</h5>
+<h3 class="text-start animation-fade-in-4 animation-fly-in-left">I try to leave entrys regulary.</h3>
+<h5 class="text-start mt-3 comment-header-font  animation-fade-in-5 animation-fly-in-right">Have a look around!</h5>
 <section class="pt-2 text-start" name="documentation">
   <p>
       <a class="btn col-1 btn-dark" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
@@ -45,11 +45,14 @@
           
           <p class="small comment-header-font">{{blog['timestamp']}}</p>
           
-          {%if session['user_id'] == 1 %} 
+          {%if session['user_id'] == 1%} 
+         
+
           <form action="/deletepost" method="post">
-          <textarea hidden name="comment_id" id="comment_id" cols="0" rows="0">{{comment['comment_id']}}</textarea>
+          <textarea hidden name="post_id" id="post_id" cols="0" rows="0">{{blog['post_id']}}</textarea>
           <button type="submit"><img class="trash-can" src="/static/trash-can.png" alt=""></button>
         </form>
+       
         {%endif%}
         
         </div>

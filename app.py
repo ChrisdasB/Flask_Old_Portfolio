@@ -1,6 +1,3 @@
-aeroleads_API = "c53b1e22d829b7b12666122519b8dec4"
-
-import os
 import re
 import feedparser
 import csv
@@ -36,7 +33,6 @@ mail = Mail(app)
 
 # Configure translator
 translator = Translator()
-
 
 # Deletes session when closes browser
 app.config["SESSION_PERMANENT"] = False
@@ -366,6 +362,12 @@ def blog():
     return render_template("blog.html", blogs=blogs)
 
 
+# ABOUT ME
+@app.route("/aboutme", methods=["GET"])
+@login_required
+def aboutme():
+    return render_template("aboutme.html")
+
 #ADMIN
 @app.route("/admincenter", methods=["GET", "POST"])
 # Make sure, admin is logged in in this session
@@ -408,10 +410,12 @@ def deletecomment():
 def deletepost():
     # Get variables
     post_id = request.form.get("post_id")
+    if not post_id:
+        return render_template("/blog.html", warning = "Something went wrong!")
     if post_id:
         db.execute("DELETE FROM blog WHERE post_id=?;", post_id)
 
-    return redirect("/blog")
+    return redirect("/blog.html")
 
 
 # DELETE USER
@@ -420,7 +424,7 @@ def deletepost():
 def deleteuser():
     # Get variables
     username = request.form.get("username")
-    if not username:
+    if not username or username == 'Admin':
         return render_template("/admincenter.html", warning1 = "Please enter a username!")
     
     userdata = db.execute("SELECT * FROM users WHERE username = ?;", username)
