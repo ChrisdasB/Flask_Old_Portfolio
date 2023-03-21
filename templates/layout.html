@@ -18,7 +18,7 @@
 
     </head>
 
-    <body style="background-image: url('/static/Coding2.jpg'); background-size: cover;">
+    <body style="background-image: url('/static/Coding2.jpg'); background-size: cover ;">
       <nav class="navbar navbar-expand-lg navbar-dark nav-bg-dark-trans">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -28,36 +28,39 @@
           <ul class="navbar-nav mr-auto mx-auto">
             {%if session['user_id'] is not defined%}
             <li class="nav-item active ">
-              <a class="nav-link" href="/login"><h4>Login</h4></a>
+              <a class="nav-link" href="/login"><h5>Login</h5></a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="/register"><h4>Register</h4></a>
+              <a class="nav-link" href="/register"><h5>Register</h5></a>
             </li>
 
             {%else%}
             <li class="nav-item active">
-              <a class="nav-link" href="/"><h4>Home</h4></a>
+              <a class="nav-link" href="/"><h5>Home</h5></a>
             </li>            
             <li class="nav-item active">
-              <a class="nav-link" href="/aboutme"><h4>About Me</h4></a>
+              <a class="nav-link" href="/aboutme"><h5>About Me</h5></a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="/projects"><h4>Projects</h4></a>
+              <a class="nav-link" href="/motivation"><h5>Motivation</h5></a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="/blog"><h4>Blog</h4></a>
+              <a class="nav-link" href="/projects"><h5>Projects</h5></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/blog"><h5>Blog</h5></a>
             </li>
             
             <li class="nav-item active">
-              <a class="nav-link" href="/contact"><h4>Contact</h4></a>
+              <a class="nav-link" href="/contact"><h5>Contact</h5></a>
             </li>
             {%if session['user_id'] == 1 %}
             <li class="nav-item active">
-              <a class="nav-link text-danger" href="/admincenter"><h4>Admin-Center</h4></a>
+              <a class="nav-link text-danger" href="/admincenter"><h5>Admin-Center</h5></a>
             </li>
             {%endif%}
             <li class="nav-item active">
-              <a class="nav-link" href="/logout"><h4>Logout</h4></a>
+              <a class="nav-link" href="/logout"><h5>Logout</h5></a>
             </li>
             {%endif%}
           </ul>

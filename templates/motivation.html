@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block main %}
+
+
+<h2 class="text-start animation-fade-in-3 mb-5">About me</h2>
+<h3 class="text-start animation-fade-in-4 animation-fly-in-left">Here are all the infos about me.</h3>
+<h5 class="text-start mt-3 comment-header-font animation-fly-in-right animation-fade-in-5">If there are more questions, <a href="/contact">contact me</a>.</h5>
+<div class="row">
+    <section class="pt-2 text-start" name="documentation">
+        <p>
+            <a class="btn col-1 btn-dark" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+              Dev-Details
+            </a>
+          </p>
+          <div class="collapse text-start" id="collapseExample">
+            <div class="card card-body bg-dark text-light mx-auto w-75">
+              <p>This site is created with HTML, CSS, JavaScript, Python and Flask.</p>
+              <p>Please login or create an account to see more of my work.</p>
+              <p>This site is supposed to be a technical showcase.</p>
+            </div>
+          </div>
+    </section>
+</div>
+<div class="buffer-1"></div>
+
+<div class="buffer-1"></div>
+<h3 class="text-light site-header-font">Motivation</h3>
+
+<table class="table w-75 mx-auto text-light bg-dark-trans">    
+    <tr>        
+        <td class="text-start">During my studies to become an IT-Systemadministrator, I was briefly introduced into programming.
+            I built a small website with HTML, CSS, JavaScript, mySQL and PHP.
+            While i had to learn a completly new job that had nothing to do with programming, i still spend a lot of my freetime coding.
+            I started the journey at <a href="https://www.freecodecamp.org/">freecodecamp.org</a> to solidify my basic knowledge in programming.
+        </p>
+        <p>
+            After that, i dived deep into games development with <a href="https://unity.com/">Unity</a> and learned to work with C#.
+            Along this way, i learned the prcinciple of object orientated programming, since it is a must know to work with Unity.
+            I finished 2 small games, where i used OOP and i really learned how to handle a bunch of data in real time.
+        </p>
+        <p>
+            In the middle of 2022 i decided, that i want to enter development professionaly and startet taking the course <a href="https://cs50.harvard.edu/x/2023/">'CS50'</a> from the Harvard University.
+            This course really gave me a deeper insight into programming. While using C, i understood the most basic principals of computers.
+        </p>
+        <p>
+            I learned the principals of memory management, diverse algorythms and how to rate them with asimtotic notations, to build my own data structure, 
+            solve problems but most importantly how to educate myselft in this field.
+        </p>
+        <p>
+            The field of programming facinates me. If i am in a project, i tend to forget everything around me. If i face frustrating problems, i never stop until is solve them.
+            I am sure, that my mindset it right for a professional career in this field.
+        </p>
+        <p>
+            What i need now, is the time to focus on it and get mentoring from experienced developers.
+        </p>
+        </td>
+    </tr>
+    
+</table>
+
+<div class="buffer-1"></div>
+
+    {%if warning is not undefined%}
+    <div>
+        <h3 class="mt-3 text-warning">{{warning}}</h3>
+    </div>
+
+    {%endif%}
+</div>
+</div>
+    
+
+{% endblock %}

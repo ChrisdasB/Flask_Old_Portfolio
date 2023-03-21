@@ -48,18 +48,18 @@
 
     
         {%if rss_feed is not undefined%}
-        <div class="card bg-dark w-75 mx-auto box-shadow mt-5">
+        <div class="card bg-dark-trans w-75 mx-auto box-shadow mt-5">
             <div class="card-header">
               <h3 class="site-header-font text-light">Feed entrys</h3>
             </div>
             <div class="card-text box-shadow pb-4"></div>
             {%for feed in rss_feed%}       
-                <div class="card mt-5 w-50 mx-auto">
+                <div class="card mt-5 w-50 mx-auto bg-dark-trans">
                   <div class="card-header comment-header-font"><h4>{{feed['title']}}</h4></div>
                   <div class="card-text mt-3 mb-3">
               <h4 class="comment-text-font">{{feed['summary']}}</h4>
               </div>
-                 <div class="card-footer text-muted">
+                 <div class="card-footer text-light">
                 
                 <p>Source: 
                     {%if feed['source'] is defined%}

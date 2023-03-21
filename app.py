@@ -254,7 +254,7 @@ def contact():
 
     # Create and send message to my mail adress
     msg = Message("New message from portfolio. User: " + username, sender=app.config['MAIL_USERNAME'], recipients=[contact_mail])
-    msg.html = render_template("message.html", username=username, msg_title = msg_title, msg_body=message, user_mail=user_mail, timestamp = str(datetime.now()))
+    msg.html = render_template("message.html", username=username, msg_title = msg_title, msg_body=message, user_mail=user_mail, timestamp = str(datetime.now())[0:19])
     mail.send(msg)
 
 
@@ -369,11 +369,17 @@ def aboutme():
     return render_template("aboutme.html")
 
 
-# ABOUT ME
+# PROJECTS
 @app.route("/projects", methods=["GET"])
 @login_required
 def projects():
     return render_template("projects.html")
+
+
+@app.route("/motivation", methods=["GET"])
+@login_required
+def motivation():
+    return render_template("motivation.html")
 
 
 #ADMIN
@@ -385,9 +391,6 @@ def admincenter():
     if request.method == "GET":
         return render_template("admincenter.html")
     
-
-
-
 
 # BLOGPOST
 @app.route("/blogpost", methods =["POST"])
@@ -413,7 +416,7 @@ def deletecomment():
     if comment_id:
         db.execute("DELETE FROM comments WHERE comment_id=?;", comment_id)
 
-    return redirect("/")
+    return redirect("/", warning= "Comment has been deleted.")
 
 # DELETE POST
 @app.route("/deletepost", methods =["POST"])
@@ -426,7 +429,7 @@ def deletepost():
     if post_id:
         db.execute("DELETE FROM blog WHERE post_id=?;", post_id)
 
-    return redirect("/blog.html")
+    return redirect("/blog.html", warning = "Blog has been deleted.")
 
 
 # DELETE USER

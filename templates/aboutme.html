@@ -20,7 +20,7 @@
           <div class="collapse text-start" id="collapseExample">
             <div class="card card-body bg-dark text-light mx-auto w-75">
               <p>This site is created with HTML, CSS, JavaScript, Python and Flask.</p>
-              <p>Please login or create an account, to see more of my work.</p>
+              <p>Please login or create an account to see more of my work.</p>
               <p>This site is supposed to be a technical showcase.</p>
             </div>
           </div>
@@ -28,117 +28,119 @@
 </div>
 <div class="buffer-1"></div>
 
-<h3 class="text-light site-header-font">Personal data:</h3>
-<table class="table w-75 mx-auto text-light bg-dark-trans">
-    <tr>
-        <th class="w-25">Full Name</th>
-        <td class="text-start">Chris Carsten Schmidt von Wuehlisch</td>
-    </tr>
-    <tr>
-        <th>Birthday</th>
-        <td class="text-start">17th of march, 1991</td>
-    </tr>
-    <tr>
-        <th>Residence</th>
-        <td class="text-start">Windhoek, Namibia</td>
-    </tr>
-    <tr>
-        <th>Nationality</th>
-        <td class="text-start">German</td>
-    </tr>
-</table>
+<div class="accordion accordion-flush bg-dark-trans" id="accordionExample">
+    <div class="accordion-item bg-dark-trans">
+      <h2 class="accordion-header bg-secondary" id="headingOne">
+        <button class="accordion-button bg-dark-trans text-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            Personal data
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          
+            <table class="table w-75 mx-auto text-light bg-dark-trans">
+                <tr>
+                    <th class="w-25">Full Name</th>
+                    <td class="text-start">Chris Carsten Schmidt von Wuehlisch</td>
+                </tr>
+                <tr>
+                    <th>Birthday</th>
+                    <td class="text-start">March 17th, 1991</td>
+                </tr>
+                <tr>
+                    <th>Residence</th>
+                    <td class="text-start">Windhoek, Namibia</td>
+                </tr>
+                <tr>
+                    <th>Nationality</th>
+                    <td class="text-start">German</td>
+                </tr>
+            </table>
 
-<div class="buffer-1"></div>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item bg-dark-trans">
+      <h2 class="accordion-header bg-secondary" id="headingTwo">
+        <button class="accordion-button collapsed bg-dark-trans text-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            Education
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
 
-<h3 class="text-light site-header-font">Education</h3>
-<table class="table w-75 mx-auto text-light bg-dark-trans">
-    <tr>
-        <th class="w-25">Highest school degree</th>
-        <td class="text-start">Technical college entrance qualification (12th grade)</td>
-    </tr>
-    <tr>
-        <th>Professional training</th>
-        <td class="text-start">Trained as an industrial clerk in sales (3 years)</td>
-    </tr>
-    <tr>
-        <th>Private education degrees</th>
-        <td class="text-start">Trained IT-Systemadministrator (ILS)</td>
-    </tr>
-    <tr>
-        <th>Certificates</th>
-        <td class="text-start">Introduction to computer science(Harvard), 
-            JavaScript Algorythms
-        </td>
-    </tr>
-</table>
+            <table class="table w-75 mx-auto text-light bg-dark-trans">
+                <tr>
+                    <th class="w-25">School-leaving certficate</th>
+                    <td class="text-start">Technical college entrance qualification (2014)</td>
+                </tr>
+                <tr>
+                    <th>Formal training</th>
+                    <td class="text-start">Industrial clerk in sales (2008 - 2011)</td>
+                </tr>
+                <tr>
+                    <th>Private education degree</th>
+                    <td class="text-start">IT-Systemadministrator (ILS, 2020)</td>
+                </tr>
+                <tr>
+                    <th>Certificates</th>
+                    <td class="text-start">Introduction to computer science (Harvard University), 
+                        JavaScript Algorythms
+                    </td>
+                </tr>
+            </table>
 
-<div class="buffer-1"></div>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header bg-secondary bg-dark-trans id="headingThree">
+        <button class="accordion-button collapsed bg-dark-trans text-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            Job Experience
+        </button>
+      </h2>
+      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+            <table class="table w-75 mx-auto text-light bg-dark-trans">
+                <tr>
+                    <th class="w-25">Retail</th>
+                    <td class="text-start">Deputy branch manager (2015-2020)</td>
+                </tr>
+                <tr>
+                    <th>IT-Systemadministration</th>
+                    <td class="text-start">First & Second Level IT-Support-Administrator (2020-2023)</td>
+                </tr>
+            </table>        </div>
+      </div>
+    </div>
+    <div class="accordion-item bg-dark-trans">
+        <h2 class="accordion-header bg-secondary" id="headingThree">
+          <button class="accordion-button bg-dark-trans text-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+            Development skills
+          </button>
+        </h2>
+        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <table class="table w-75 mx-auto text-light bg-dark-trans">
+                <tr>
+                    <th class="w-25">Languages I know</th>
+                    <td class="text-start">C | C# | Python | SQL | JavaScript | HTML | CSS</td>
+                </tr>
+                <tr>
+                    <th>I work with</th>
+                    <td class="text-start">Unity-Engine | Flask | Databases | Bootstrap</td>
+                </tr>
+                <tr>
+                    <th>I'm also familiar with</th>
+                    <td class="text-start">VS-Code | GitHub | OOP</td>
+                </tr>
+            </table>       
+        </div>
+        </div>
+      </div>
+  </div>
 
-<h3 class="text-light site-header-font">Job Experience</h3>
-<table class="table w-75 mx-auto text-light bg-dark-trans">
-    <tr>
-        <th class="w-25">Retail</th>
-        <td class="text-start">Deputy branch manager (5 years)</td>
-    </tr>
-    <tr>
-        <th>IT-Systemadministration</th>
-        <td class="text-start">First & Second-Level IT-Support-Administrator (2.5 years)</td>
-    </tr>
-</table>
 
-<div class="buffer-1"></div>
-
-<h3 class="text-light site-header-font">Development skills</h3>
-<table class="table w-75 mx-auto text-light bg-dark-trans">
-    <tr>
-        <th class="w-25">Languages i used</th>
-        <td class="text-start">C | C# | Python | SQL | JavaScript | HTML | CSS</td>
-    </tr>
-    <tr>
-        <th>I worked with</th>
-        <td class="text-start">Unity-Engine | Flask | Databases | Bootstrap</td>
-    </tr>
-    <tr>
-        <th>Im also familiar with</th>
-        <td class="text-start">VS-Code | GitHub | OOP</td>
-    </tr>
-</table>
-<div class="buffer-1"></div>
-<h3 class="text-light site-header-font">Motivation</h3>
-
-<table class="table w-75 mx-auto text-light bg-dark-trans">    
-    <tr>
-        
-        <td class="text-start"><p>In my personal education at ILS to become a IT-Systemadministrator, i was briefly introduced to programming.
-            In this course, i build a small website with HTML, CSS, JavaScript, mySQL and PHP.
-            That was in the middle of 2020. I left the sales-branche, to work in IT.
-            While i had to learn a completly new job that had nothing to do with programming, i still spend a lot of my freetime with coding.
-            I started the journey at <a href="https://www.freecodecamp.org/">freecodecamp.org</a> to solidify my basic knowledge in programming.
-        </p>
-        <p>
-            After that, i dived deep into games development with <a href="https://unity.com/">Unity</a> and learned to work with C#.
-            Along this way, i learned the prcinciple of object orientated programming, since it is a must know to work with Unity.
-            I finished 2 small games, where i used OOP and i really learned how to handle a bunch of data in real time.
-        </p>
-        <p>
-            In the middle of 2022 i decided, that i want to enter development professionaly and startet taking the course <a href="https://cs50.harvard.edu/x/2023/">'CS50'</a> from the Harvard University.
-            This course really gave me a deeper insight into programming. While using C, i understood the most basic principals of computers.
-        </p>
-        <p>
-            I learned the principals of memory management, diverse algorythms and how to rate them with asimtotic notations, to build my own data structure, 
-            solve problems but most importantly how to educate myselft in this field.
-        </p>
-        <p>
-            The field of programming facinates me. If i am in a project, i tend to forget everything around me. If i face frustrating problems, i never stop until is solve them.
-            I am sure, that my mindset it right for a professional career in this field.
-        </p>
-        <p>
-            What i need now, is the time to focus on it and get mentoring from experienced developers.
-        </p>
-        </td>
-    </tr>
-    
-</table>
 
 <div class="buffer-1"></div>
 

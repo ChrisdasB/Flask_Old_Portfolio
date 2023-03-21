@@ -113,12 +113,6 @@ body {
     animation: fadeIn 8s; 
 }
 
-@keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-  }
-
-
 .animation-fly-in-left {
     position: relative;
     animation: left-fly-in;
@@ -143,6 +137,11 @@ body {
     animation-duration: 3.5s;
 }
 
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
 @keyframes left-fly-in {
     0% {left: -50px;}
     100% {left: 0px;}
@@ -156,4 +155,9 @@ body {
 @keyframes top-fly-in {
     0% {top: -300px;}
     100% {top: 0px;}
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: black;
+    color: white;
 }
