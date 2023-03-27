@@ -10,7 +10,7 @@
 <h5 class="text-start mt-3 comment-header-font  animation-fade-in-5 animation-fly-in-right">Have a look around!</h5>
 <section class="pt-2 text-start" name="documentation">
   <p>
-      <a class="btn col-1 btn-dark" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+      <a class="btn col-1 btn-dark w-auto" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
         Dev-Details
       </a>
     </p>
@@ -27,16 +27,17 @@
         {%endif%}
 <div class="buffer-1"></div>
 
-
-    <div class="card mb-5 bg-dark-trans w-75 mx-auto box-shadow-light">
-      <div class="card-header">
-        <h3 class="site-header-font text-light">Blog entrys from Chris</h3>
-      </div>
-      <div class="card-text pb-4">
-      {%if blogs is defined%}
-      {%for blog in blogs%}
-      <div class="card border-0 m-5 w-50 mx-auto box-shadow-light bg-dark-trans">
-        
+<div class="row">
+  <div class="card mb-5 bg-dark-trans col-md-8 col-sm-12 mx-auto box-shadow-light">
+    <div class="card-header">
+      <h3 class="site-header-font text-light">Blog entrys from Chris</h3>
+    </div>
+    <div class="card-text pb-4">
+    {%if blogs is defined%}
+    {%for blog in blogs%}
+    <div class="row">
+      <div class="card border-0 m-5 col-md-8 col-sm-12 mx-auto box-shadow-light bg-dark-trans">
+      
         <div class="card-header bg-color-black small comment-header-font">{{blog['title']}}</div>
         <div class="card-text mt-3 mb-3">
           <h4 class="comment-text-font">{{blog['text']}}</h4>
@@ -47,20 +48,26 @@
           
           {%if session['user_id'] == 1%} 
          
-
+  
           <form action="/deletepost" method="post">
           <textarea hidden name="post_id" id="post_id" cols="0" rows="0">{{blog['post_id']}}</textarea>
           <button type="submit"><img class="trash-can" src="/static/trash-can.png" alt=""></button>
         </form>
        
-        {%endif%}
-        
-        </div>
-      </div> 
-      <hr class="text-light">
 
-      {%endfor%}
-      {%endif%}        
-      </div>
     </div>
+    
+      {%endif%}
+      
+      </div>
+    </div> 
+    <hr class="text-light">
+
+    {%endfor%}
+    {%endif%}        
+    </div>
+  </div>
+
+</div>
+    
 {% endblock %}

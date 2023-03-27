@@ -7,55 +7,42 @@
 {% block main %}
 <h1 class="site-header-font text-light mb-5">Admin-Center</h1>
 
-<section class="mb-3" name="documentation">
-    <p>
-        <a class="btn btn-secondary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-          Dev-Details
-        </a>
-      </p>
-      <div class="collapse" id="collapseExample">
-        <div class="card card-body box-shadow bg-dark text-light mx-auto w-75">
-          <p>Comments are only allowed in english.</p>
-          <p>Every comment will have custom and a imported profanity check.</p>
-          <p>Every comment will be translated to englisch.</p>
-          <p>The 'google_trans' API returns, which language was detected</p>
-          <p>If the given language is not english, the automated translation will be displayed to the user.</p>
-          <p>Try it, and copy this german comment into the textfield and try to send it:</p>
-          <p class="text-warning">Dieser Kommentar ist auf deutsch geschrieben.</p>
+<div class="row">
+    <div class="card col-sm-12 col-md-8 mx-auto box-shadow-small mb-5 bg-dark">
+        <div class="card-header text-light"><h3>Blog Post</h3></div>
+    <form action="/blogpost" method="post">
+        <div class="card-text pt-5">
+            <input autocomplete="off" class="form-control w-75 mx-auto mb-3" type="text" placeholder="Title" name="title" id="title">        
+            <textarea class="w-75" name="content" id="content" cols="30" rows="8"></textarea>        
         </div>
-      </div>
-</section>
-
-<div class="card w-50 mx-auto box-shadow-small mb-5 bg-dark">
-    <div class="card-header text-light"><h3>Blog Post</h3></div>
-<form action="/blogpost" method="post">
-    <div class="card-text pt-5">
-        <input autocomplete="off" class="form-control w-50 mx-auto mb-3" type="text" placeholder="Title" name="title" id="title">        
-        <textarea class="w-50" name="content" id="content" cols="30" rows="8"></textarea>        
+        <div class="card-footer">        
+            <button type="submit" class="w-25 btn btn-secondary prevent-default">Post</button>
+            {%if warning is defined%}
+                    <h3 class="text-warning mt-3">{{warning}}</h3>
+            {%endif%}
+        </div>
+    </form>
     </div>
-    <div class="card-footer">        
-        <button type="submit" class="w-25 btn btn-secondary prevent-default">Send</button>
-        {%if warning is defined%}
-                <h3 class="text-warning mt-3">{{warning}}</h3>
-        {%endif%}
-    </div>
-</form>
 </div>
 
-<div class="card w-50 mx-auto box-shadow-small mb-5 bg-dark">
-    <div class="card-header text-light"><h3>Delete user</h3></div>
-<form action="/deleteuser" method="post">
-    <div class="card-text pt-5">
-        <input autocomplete="off" class="form-control w-50 mx-auto mb-3" type="text" placeholder="Username ..." name="username" id="username">              
+
+<div class="row">
+    <div class="card col-sm-12 col-md-8 mx-auto box-shadow-small mb-5 bg-dark">
+        <div class="card-header text-light"><h3>Delete user</h3></div>
+    <form action="/deleteuser" method="post">
+        <div class="card-text pt-5">
+            <input autocomplete="off" class="form-control w-75 mx-auto mb-3" type="text" placeholder="Username ..." name="username" id="username">              
+        </div>
+        <div class="card-footer">        
+            <button type="submit" class="w-25 btn btn-secondary prevent-default2">Delete</button>
+            {%if warning1 is defined%}
+                    <h3 class="text-warning mt-3">{{warning1}}</h3>
+            {%endif%}
+        </div>
+    </form>
     </div>
-    <div class="card-footer">        
-        <button type="submit" class="w-25 btn btn-secondary prevent-default2">Send</button>
-        {%if warning1 is defined%}
-                <h3 class="text-warning mt-3">{{warning1}}</h3>
-        {%endif%}
-    </div>
-</form>
 </div>
+
 
 <script>
     document.querySelector(".prevent-default").on("keydown", function(e){

@@ -10,7 +10,7 @@
 
 <section class="mb-3" name="documentation">
     <p>
-        <a class="btn btn-secondary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+        <a class="btn btn-secondary w-auto" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
           Dev-Details
         </a>
       </p>
@@ -27,28 +27,32 @@
       </div>
 </section>
 
-<div class="card w-50 mx-auto box-shadow-small mb-5 bg-dark">
-    <div class="card-header text-light">Please comment in english.</div>
-<form action="/comment" method="post">
-    <div class="card-text pt-5">
-        {%if translation is defined%}
-        <h3 class="text-warning">Foreign language detected.</h3>
-        <h4 class="text-warning">Please check your automated translation.</h4>        
-        <textarea name="comment" id="comment" cols="30" rows="8">{{translation}}</textarea>
-        {%else%}
-        <textarea name="comment" id="comment" cols="30" rows="8"></textarea>
-        {%endif%}
-        
-        
+<div class="row">
+    <div class="card col-sm-12 col-md-8 mx-auto box-shadow-small mb-5 bg-dark">
+        <div class="card-header text-light">Please comment in english.</div>
+    <form action="/comment" method="post">
+        <div class="card-text pt-5">
+            {%if translation is defined%}
+            <h3 class="text-warning">Foreign language detected.</h3>
+            <h4 class="text-warning">Please check your automated translation.</h4>        
+            <textarea name="comment" id="comment" cols="30" rows="8">{{translation}}</textarea>
+            {%else%}
+            <textarea name="comment" id="comment" cols="30" rows="8"></textarea>
+            {%endif%}
+            
+            
+        </div>
+        <div class="card-footer">        
+            <button type="submit" class="w-25 btn btn-secondary">Send</button>
+            {%if warning is defined%}
+                    <h3 class="text-warning mt-3">{{warning}}</h3>
+            {%endif%}
+        </div>
+    </form>
     </div>
-    <div class="card-footer">        
-        <button type="submit" class="w-25 btn btn-secondary">Send</button>
-        {%if warning is defined%}
-                <h3 class="text-warning mt-3">{{warning}}</h3>
-        {%endif%}
-    </div>
-</form>
+
 </div>
+
 
 <script>
     document.querySelector(".prevent-default").on("keydown", function(e){

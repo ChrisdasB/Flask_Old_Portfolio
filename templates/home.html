@@ -10,7 +10,7 @@
 <h5 class="text-start mt-3 comment-header-font animation-fly-in-right animation-fade-in-5">Your are a member since {{userdata[0]["reg_date"]}}</h5>
 <section class="pt-2 text-start" name="documentation">
   <p>
-      <a class="btn col-1 btn-dark" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+      <a class="btn col-1 btn-dark w-auto" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
         Dev-Details
       </a>
     </p>
@@ -38,29 +38,32 @@
       {%if comments is defined%}
       {%for comment in comments%}
       <div class="carousel-item">
+        <div class="row">
+          <div class="card border-0 m-5 col-md-6 col-sm-6 mx-auto box-shadow-light bg-dark-trans">
+            <div class="pl-5 img-container">
+              <img class="bg-comment" src="/static/comments.png">
+            </div>
+            
+            <div class="card-header bg-color-black small comment-header-font">{{comment['username']}} said:</div>
+            <div class="card-text mt-3 mb-3">
+              <h4 class="comment-text-font col-8 mx-auto">{{comment['text']}}</h4>
+            </div>
+            <div class="card-footer bg-color-blue">
+              
+              <p class="small comment-header-font">{{comment['timestamp']}}</p>
+              
+              {%if session['user_id'] == 1 %} 
+              <form action="/deletecomment" method="post">
+              <textarea hidden name="comment_id" id="comment_id" cols="0" rows="0">{{comment['comment_id']}}</textarea>
+              <button type="submit"><img class="trash-can" src="/static/trash-can.png" alt=""></button>
+            </form>
+            {%endif%}
+            
+            </div>
+          </div>             
+
+        </div>
         
-        <div class="card border-0 m-5 w-50 mx-auto box-shadow-light bg-dark-trans">
-          <div class="pl-5 img-container">
-            <img class="bg-comment" src="/static/comments.png">
-          </div>
-          
-          <div class="card-header bg-color-black small comment-header-font">{{comment['username']}} said:</div>
-          <div class="card-text mt-3 mb-3">
-            <h4 class="comment-text-font">{{comment['text']}}</h4>
-          </div>
-          <div class="card-footer bg-color-blue">
-            
-            <p class="small comment-header-font">{{comment['timestamp']}}</p>
-            
-            {%if session['user_id'] == 1 %} 
-            <form action="/deletecomment" method="post">
-            <textarea hidden name="comment_id" id="comment_id" cols="0" rows="0">{{comment['comment_id']}}</textarea>
-            <button type="submit"><img class="trash-can" src="/static/trash-can.png" alt=""></button>
-          </form>
-          {%endif%}
-          
-          </div>
-        </div>             
       </div>
       {%endfor%}
       {%endif%} 

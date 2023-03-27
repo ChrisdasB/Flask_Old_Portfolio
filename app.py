@@ -10,15 +10,16 @@ from tempfile import mkdtemp
 from werkzeug.security import check_password_hash, generate_password_hash
 from datetime import datetime
 from flask_mail import Mail, Message
-from profanity_check import predict
+from email.message import EmailMessage
+import smtplib
 from langdetect import detect
 from googletrans import Translator
-from smtplib import SMTPException, SMTPRecipientsRefused
-
-
+from smtplib import SMTPRecipientsRefused
 from toolbox import login_required, admin_required
 
 app = Flask(__name__)
+if __name__ == "__main__":
+    app.run(debug=False, host="0.0.0.0")
 
 # Configure mailing
 app.config['MAIL_SERVER']= 'smtp.web.de'
@@ -138,27 +139,13 @@ def register():
     # Fill profanity_list by opening, reading and adding from CSV-File
     profanity_list = []
     with open('static/custom_profanity.csv', newline='') as csvfile:
-        spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|')
+        spamreader = csv.reader(csvfile, delimiter=',', quotechar='|')
         for row in spamreader:
             profanity_list.append(row)
 
-    # For propper comparrison, get username in lowercase
-    newUsername_lower = newUsername.lower()
-
-    # Check username against every entry in profanity_list, if we have a hit, rerender template with warning
-    for word in profanity_list:
-        if word[0] in newUsername_lower:
-            return render_template("register.html", warning="No offensive usernames allowed.")
+    # For propper translation, get username in lowercase
+    newUsername_lower = newUsername.lower()    
         
-    # Translate text via API call to google translator
-    newUsername_eng = translator.translate(newUsername_lower)
-    newUsername_eng = newUsername_eng.text
-
-    # Reformat translated text and put it in englisch profanity checker, if we have a hit, rerender template with warning
-    newUsername_eng_arr = [newUsername_eng]
-    if predict(newUsername_eng_arr) > 0:
-        return render_template("register.html", warning="No offensive usernames allowed.")
-
     # Check if two passwords match
     if not newPassword == confirmation:
         return render_template("register.html", warning="Passwords do not match!")
@@ -186,6 +173,16 @@ def register():
     username_check = db.execute("SELECT username FROM users WHERE username = ?;", newUsername)
     if username_check:
         return render_template("register.html", warning="Username already taken!")
+    
+    # Translate text via API call to google translator
+    newUsername_eng = translator.translate(newUsername_lower)
+    newUsername_eng = newUsername_eng.text
+    newUsername_eng_lower = newUsername_eng.lower()
+
+    # Check username against every entry in profanity_list, if we have a hit, rerender template with warning
+    for word in profanity_list:
+        if word[0] in newUsername_eng_lower:
+            return render_template("register.html", warning="No offensive usernames allowed.") 
     
     # Insert new user into DB
     db.execute("INSERT INTO users (username, hash, reg_date) VALUES (?,?,?);",newUsername, generate_password_hash(newPassword), datetime.now())
@@ -282,29 +279,25 @@ def comment():
     if len(comment_text.split(" ")) < 5 or len(comment_text.split(" ")) > 35:
         return render_template("comment.html", warning="Pleaser enter at lest 5 words, max 35!")
     
-    # Prepare custom profanity list from local CSV
+    # Fill profanity_list by opening, reading and adding from CSV-File
     profanity_list = []
     with open('static/custom_profanity.csv', newline='') as csvfile:
-        spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|')
+        spamreader = csv.reader(csvfile, delimiter=',', quotechar='|')
         for row in spamreader:
             profanity_list.append(row)
 
     # Transfer text to lower case
     comment_text_lower = comment_text.lower()
 
-    # Check each word in text against profanity list
-    for word in profanity_list:
-        if word[0] in comment_text_lower:
-            return render_template("comment.html", warning="Please watch your language :(")
-
     # Translate text API call from google translator
     comment_eng = translator.translate(comment_text)
     comment_eng = comment_eng.text
 
-    # Format translated text and send it to englisch profnity checker
-    comment_eng_arr = [comment_eng]
-    if predict(comment_eng_arr) > 0:
-        return render_template("comment.html", warning="Please watch your language :(")
+    # Check each word in text against profanity list
+    for word in profanity_list:
+        if word[0] in comment_text_lower or word[0] in comment_eng:
+            return render_template("comment.html", warning="Please watch your language :( Bad word:" + word[0])    
+        
     
     # If we detect a foreign language, display translated text for validation to user
     if detect(comment_text_lower) != "en":
@@ -416,7 +409,7 @@ def deletecomment():
     if comment_id:
         db.execute("DELETE FROM comments WHERE comment_id=?;", comment_id)
 
-    return redirect("/", warning= "Comment has been deleted.")
+    return redirect("/")
 
 # DELETE POST
 @app.route("/deletepost", methods =["POST"])
@@ -429,7 +422,7 @@ def deletepost():
     if post_id:
         db.execute("DELETE FROM blog WHERE post_id=?;", post_id)
 
-    return redirect("/blog.html", warning = "Blog has been deleted.")
+    return redirect("/blog")
 
 
 # DELETE USER
